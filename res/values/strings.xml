@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Randroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="pick">Pick</string>
+    <string name="title_activity_multi_randroid">MultiRandroid</string>
+    <string name="max">Maximum</string>
+    <string name="numbers">Numbers to pick</string>
+    <string name="title_activity_list_multi_randroid">ListMultiRandroid</string>
+    <string name="title_activity_suspense_randroid">SuspenseRandroid</string>
+    <string name="title_activity_randroid_service_controller">RandroidServiceController</string>
+    <string name="service_status">Service Status</string>
+    <string name="number_picker">Pick a number between 1 and</string>
+    <string name="n_picker">Number of picks</string>
+    <string name="delay_picker">Delay between picks</string>
+
+</resources>
