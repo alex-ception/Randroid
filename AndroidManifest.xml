@@ -39,5 +39,6 @@
             </intent-filter>
         </activity>
         <service android:name=".RandroidService"></service>
-    </application>
+        <service android:name=".RandroidNotifier"></service>
+        </application>
 </manifest>

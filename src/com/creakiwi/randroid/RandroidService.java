@@ -1,6 +1,8 @@
 package com.creakiwi.randroid;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
 import android.app.Service;
@@ -14,6 +16,7 @@ public class RandroidService extends Service {
 	public static final String MAX			= "max";
 	public static final String DELAY		= "delay";
 	public static final String RESULT		= "result";
+	public static final String DATE			= "date";
 
 	private boolean run;
 	private int n;
@@ -112,6 +115,8 @@ public class RandroidService extends Service {
 			protected void onPostExecute(ArrayList<Integer> result) {
 				super.onPostExecute(result);
 				Intent i = new Intent(NOTIFICATION);
+				SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+				i.putExtra(DATE, df.format(Calendar.getInstance().getTime()));
 				i.putExtra(RESULT, result);
 				sendBroadcast(i);
 			}

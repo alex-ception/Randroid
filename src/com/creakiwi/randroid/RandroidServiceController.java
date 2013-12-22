@@ -51,7 +51,8 @@ public class RandroidServiceController extends Activity {
 		int n 		= Integer.valueOf(((EditText) this.findViewById(R.id.n_picker)).getText().toString());
 		int max 	= Integer.valueOf(((EditText) this.findViewById(R.id.max_picker)).getText().toString());
 		int delay 	= Integer.valueOf(((EditText) this.findViewById(R.id.delay_picker)).getText().toString());
-		
+
+		this.startService(new Intent(this, RandroidNotifier.class));
 		Intent randroid_service = new Intent(this, RandroidService.class);
 		randroid_service.putExtra(RandroidService.PICKS, n);
 		randroid_service.putExtra(RandroidService.MAX, max);
@@ -66,5 +67,6 @@ public class RandroidServiceController extends Activity {
 	protected void stop()
 	{
 		stopService(new Intent(this, RandroidService.class));
+		stopService(new Intent(this, RandroidNotifier.class));
 	}
 }

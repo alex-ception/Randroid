@@ -14,6 +14,6 @@
     <string name="service_status">Service Status</string>
     <string name="number_picker">Pick a number between 1 and</string>
     <string name="n_picker">Number of picks</string>
-    <string name="delay_picker">Delay between picks</string>
+    <string name="delay_picker">Delay between picks (seconds)</string>
 
 </resources>
