@@ -34,6 +34,9 @@ public class SuspenseRandroid extends Activity {
 		return true;
 	}
 
+	/*
+	 * Called when the button to start the pick is clicked
+	 */
 	public void sortOnClick(View v)
 	{
 		this.list						= new ArrayList<Integer>();

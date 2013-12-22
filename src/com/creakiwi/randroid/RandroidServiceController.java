@@ -18,6 +18,10 @@ public class RandroidServiceController extends Activity {
 		
 		Switch service_switcher = (Switch) this.findViewById(R.id.status);
 
+		/*
+		 *  The switch in the activity is used to start or stop the service
+		 *  Due to threads, there is a delay between setting the switch to off, and the real stop of the service
+		 */
 		service_switcher.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -36,6 +40,12 @@ public class RandroidServiceController extends Activity {
 		return true;
 	}
 
+	/*
+	 * Called when the switch is ON
+	 * Tries to start the service
+	 * Application is killed when n, max, or delay aren't filled
+	 * (I have to handle this bug)
+	 */
 	protected void start()
 	{
 		int n 		= Integer.valueOf(((EditText) this.findViewById(R.id.n_picker)).getText().toString());
@@ -49,6 +59,10 @@ public class RandroidServiceController extends Activity {
 		this.startService(randroid_service);
 	}
 	
+	/*
+	 * Called when the switch is OFF
+	 * Stops the service
+	 */
 	protected void stop()
 	{
 		stopService(new Intent(this, RandroidService.class));

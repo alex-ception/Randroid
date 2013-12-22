@@ -20,6 +20,10 @@ public class RandroidService extends Service {
 	private int max;
 	private int delay;
 
+	/*
+	 * Launches the service, using parameters given by the activity (or defaults, if not found)
+	 * Launches a new thread, where a loop is launched, and sleeped every *delay* seconds to simulate multiple lottery picks
+	 */
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		if (!intent.hasExtra(PICKS)
@@ -54,12 +58,19 @@ public class RandroidService extends Service {
 		return null;
 	}
 	
+	/*
+	 * Stops the service
+	 * When the service is stopped, the loop is stopped too
+	 */
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		this.run = false;
 	}
-	
+
+	/*
+	 * Pick a number between 1 and *max*
+	 */
 	protected int pick(int max)
 	{
 		Random r = new Random();
@@ -67,9 +78,16 @@ public class RandroidService extends Service {
 		
 		return rand_number;
 	}
-	
+
+	/*
+	 * Create an AsyncTask to retrieve results, and broadcast them once they are computed
+	 */
 	protected void inLoop() {
 		AsyncTask<Void, Void, ArrayList<Integer>> task = new AsyncTask<Void, Void, ArrayList<Integer>>() {
+			/*
+			 * Computing the results of the lottery pick
+			 * Knowing that results have to be unique
+			 */
 			@Override
 			protected ArrayList<Integer> doInBackground(Void... params) {
 				ArrayList<Integer> results = new ArrayList<Integer>();
@@ -87,6 +105,9 @@ public class RandroidService extends Service {
 				return results;
 			}
 
+			/*
+			 * The results of this lottery pick are computed and are broadcasted
+			 */
 			@Override
 			protected void onPostExecute(ArrayList<Integer> result) {
 				super.onPostExecute(result);
